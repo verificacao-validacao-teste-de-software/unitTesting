@@ -30,6 +30,31 @@ class Ataque:
     def conferirSeGanhou(self):
         return self.armasCorretasNaPosicaoCorreta == 4
 
+""" 
+- Criacao dos dubles para a classe Ataque
+- Testador: Jose Joao
+"""
+class AtaqueStub(Ataque):
+    def __init__(self):
+        self.armas = [1,2,3,4]
+        self.armasCorretasNaPosicaoCorreta = 0
+        self.armasCorretasNaPosicaoErrada = 0
 
 class AtaqueDummy(Ataque):
     pass
+
+class AtaqueSpy(Ataque):
+    def __init__(self, armas):
+        self.armas = armas
+        self.armasCorretasNaPosicaoCorreta = 0
+        self.armasCorretasNaPosicaoErrada = 0
+        self.acertouAtaqueCount = 0
+    
+    def __del__(self):
+        self.armas = []
+        self.armasCorretasNaPosicaoCorreta = 0
+        self.armasCorretasNaPosicaoErrada = 0
+        self.acertouAtaqueCount = 0
+
+    def acertouAtaque(self):
+        self.acertouAtaqueCount += 1
